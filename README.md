@@ -1,5 +1,6 @@
 # Boombot
-This was a personal project created in Summer of 2020 and continued on until November 2020 with Discord.js and node.js.
+This was a personal project created in Summer of 2020 and continued on until November 2020 with Discord.js and node.js. 
+[no longer in use]
 
 A Discord music bot with additional fun commands. :)
 
