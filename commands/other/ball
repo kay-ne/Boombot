@@ -1,0 +1,56 @@
+const Discord = require("discord.js");
+
+module.exports.run = async(client, message, args, serverQueue, ops) => 
+{
+    if(!args[0])
+    {
+        message.channel.send("You don't have a query for 8ball, go away or try again with a question this time.");
+    }
+    else
+    {
+        let msg = await message.channel.send("8ball is thinking about your question...");
+        let responses = [
+            '**As I see it, yes.**',
+            '**Ask again later**',
+            '**Better not tell you now.**',
+            '**Cannot predict now.**',
+            '**Don\'t count on it.**',
+            '**It is certain.**',
+            '**It is decidedly so.**',
+            '**Most likely.**',
+            '**My reply is no.**',
+            '**My sources say no.**',
+            '**Outlook not so good.**',
+            '**Outlook good.**',
+            '**Reply hazy, try again.**',
+            '**Signs point to yes.**',
+            '**Very doubtful.**',
+            '**Without a doubt.**',
+            '**Yes.**',
+            '**Yes - definitely.**',
+            '**You may rely on it.**'
+        ];
+
+        let responsesIndex = Math.round(Math.random()*responses.length);
+        var answer = responses[responsesIndex];
+
+        if(!answer)
+        {
+            message.channel.send("8ball could not form an answer at this time. Please try again!");
+            msg.delete();
+        }
+        else{
+            let ball8Embed = new Discord.MessageEmbed()
+                .setColor('#5d97be')
+                .setTitle(`${answer}`)
+                .setTimestamp()
+            message.channel.send(ball8Embed);
+            msg.delete();
+        }
+    }
+}
+
+module.exports.help = {
+    name: "8ball",
+    aliases:[] //to add more aliases separate with commas ex: "p", "pin"
+}
