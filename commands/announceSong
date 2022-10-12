@@ -1,0 +1,25 @@
+module.exports.run = async(client, message, args, serverQueue, ops) => 
+{
+    if(!message.member.hasPermission("MANAGE_GUILD")) return message.reply("You do not have permissions to enable/disable announcing songs!");
+    else
+    if(!serverQueue)
+    {
+        return message.channel.send("❌ **Please have a song playing to enable/disable announcing songs!**");
+    }
+    else
+    if(serverQueue.announce === false)
+    {
+        serverQueue.announce = true;
+        message.channel.send("✅ **Now playing message enabled!**")
+    }
+    else
+    {
+        serverQueue.announce = false;
+        message.channel.send("✅ **Now playing message disabled!**");
+    }
+}
+
+module.exports.help = {
+    name: "announce",
+    aliases:[] //to add more aliases separate with commas ex: "p", "pin"
+}
